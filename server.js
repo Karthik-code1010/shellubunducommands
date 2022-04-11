@@ -6,7 +6,7 @@ const PORT = 3100
 
 const app = express()
 //const api = require('./routes/api')
-var result = exec('dir', (error, stdout, stderr) => {
+var result = exec('docker images', (error, stdout, stderr) => {
     if (error) {
       console.log(`error: ${error.message}`);
       return;
