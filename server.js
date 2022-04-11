@@ -1,12 +1,14 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const { exec } = require('child_process');
+const { execFile } = require('child_process');
+const { spawn } = require('child_process');
 
 const PORT = 3100
 
 const app = express()
 //const api = require('./routes/api')
-var result = exec('docker images', (error, stdout, stderr) => {
+var result = exec('cal', (error, stdout, stderr) => {
     if (error) {
       console.log(`error: ${error.message}`);
       return;
@@ -17,6 +19,18 @@ var result = exec('docker images', (error, stdout, stderr) => {
     }
     console.log(`stdout: ${stdout}`);
   });
+  
+// var filesh = execFile('./somefile.sh', (error, stdout, stderr) => {
+//   if (error) {
+//     console.log(`error: ${error.message}`);
+//     return;
+//   }
+//   if (stderr) {
+//     console.log(`stderr: ${stderr}`);
+//     return;
+//   }
+//   console.log(`stdout: ${stdout}`);
+// });
 
 app.use(bodyParser.json())
 // app.use('/api',api)
