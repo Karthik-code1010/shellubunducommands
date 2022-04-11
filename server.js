@@ -19,6 +19,17 @@ var result = exec('pwd', (error, stdout, stderr) => {
     }
     console.log(`stdout: ${stdout}`);
   });
+exec('sh somefile.sh', (error, stdout, stderr) => {
+    if (error) {
+      console.log(`error: ${error.message}`);
+      return;
+    }
+    if (stderr) {
+      console.log(`stderr: ${stderr}`);
+      return;
+    }
+    console.log(`stdout: ${stdout}`);
+  });
   
 // var filesh = execFile('./somefile.sh', (error, stdout, stderr) => {
 //   if (error) {
