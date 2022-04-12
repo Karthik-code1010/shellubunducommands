@@ -111,6 +111,28 @@ app.post('/shcmd', function(req, res){
 
 
 })
+app.post('/shparam', function(req, res){
+  console.log(req.body.name);
+  console.log(req.body.cname);
+  var name = req.body.name;
+  var cname = req.body.cname;
+
+  exec(`sh somefile.sh ${name} ${cname}`, (error, stdout, stderr) => {
+    if (error) {
+      console.log(`error: ${error.message}`);
+      return;
+    }
+    if (stderr) {
+      console.log(`stderr: ${stderr}`);
+      return;
+    }
+    console.log(`stdout: ${stdout}`);
+  });
+  
+  res.status(200).send('success')
+
+
+})
 
 app.listen(PORT, function(){
     console.log('Server  running on localhost:'+ PORT)
