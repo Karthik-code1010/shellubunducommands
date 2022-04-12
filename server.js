@@ -19,7 +19,7 @@ var result = exec('pwd', (error, stdout, stderr) => {
     }
     console.log(`stdout: ${stdout}`);
   });
-exec('sh somefile.sh', (error, stdout, stderr) => {
+exec('sh somefile.sh karthik innoart', (error, stdout, stderr) => {
     if (error) {
       console.log(`error: ${error.message}`);
       return;
