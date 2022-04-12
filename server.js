@@ -32,6 +32,7 @@ exec('sh somefile.sh', (error, stdout, stderr) => {
   });
   
 // var filesh = execFile('./somefile.sh', (error, stdout, stderr) => {
+
 //   if (error) {
 //     console.log(`error: ${error.message}`);
 //     return;
@@ -42,6 +43,47 @@ exec('sh somefile.sh', (error, stdout, stderr) => {
 //   }
 //   console.log(`stdout: ${stdout}`);
 // });
+
+//exec file method
+
+const child = execFile('node', ['filedemo.js'], 
+        (error, stdout, stderr) => {
+  if (error) {
+    throw error;
+  }
+  console.log(stdout);
+});
+
+
+//fork method 
+var cp = require('child_process');
+  
+var childp = cp.fork(__dirname + '/sub.js');
+  
+childp.on('message', function(m) {
+  console.log('Parent process received:', m);
+});
+  
+childp.send({ hello: 'from parent process' });
+  
+childp.on('close', (code) => {
+  console.log(`child process exited with code ${code}`);
+});
+
+///nodejs-shell-commands
+//const { spawn } = require('child_process');
+const childs = spawn('ls', ['/nodejs-shell-commands'], {shell: true});
+childs.stdout.on('data', (data) => {
+  console.log(`stdout: ${data}`);
+});
+  
+childs.stderr.on('data', (data) => {
+  console.error(`stderr: ${data}`);
+});
+  
+childs.on('close', (code) => {
+  console.log(`child process exited with code ${code}`);
+});
 
 app.use(bodyParser.json())
 // app.use('/api',api)
