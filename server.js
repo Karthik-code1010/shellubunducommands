@@ -8,7 +8,7 @@ const PORT = 3100
 
 const app = express()
 //const api = require('./routes/api')
-var result = exec('pwd', (error, stdout, stderr) => {
+var result = exec('ls', (error, stdout, stderr) => {
     if (error) {
       console.log(`error: ${error.message}`);
       return;
@@ -30,6 +30,19 @@ exec('sh somefile.sh karthik innoart', (error, stdout, stderr) => {
     }
     console.log(`stdout: ${stdout}`);
   });
+  console.log(123);
+  exec('docker cp C:\\Users\\Innoart\\Documents\\username.csv flsrvr_cntnr:/home', (error, stdout, stderr) => {
+    if (error) {
+      console.log(`error: ${error.message}`);
+      return;
+    }
+    if (stderr) {
+      console.log(`stderr: ${stderr}`);
+      return;
+    }
+    console.log(`stdout: ${stdout}`);
+  });
+ 
  
   
 // var filesh = execFile('./somefile.sh', (error, stdout, stderr) => {
@@ -168,6 +181,30 @@ app.post('/ubundufile', function(req, res){
 
 })
 
+app.post('/windowsfile', function(req, res){
+  console.log('windows file start');
+  var path = req.body.path;
+ 
+  exec(`start wcmd.cmd ${path}`, (error, stdout, stderr) => {
+    if (error) {
+      console.log(`error: ${error.message}`);
+      return;
+    }
+    if (stderr) {
+      console.log(`stderr: ${stderr}`);
+      return;
+    }
+    console.log(`stdout: ${stdout}`);
+  });
+  console.log('windows file end');
+
+  
+  res.status(200).send('success')
+
+
+})
+
 app.listen(PORT, function(){
     console.log('Server  running on localhost:'+ PORT)
 })
+
