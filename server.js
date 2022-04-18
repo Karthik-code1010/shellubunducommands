@@ -30,7 +30,7 @@ exec('sh somefile.sh karthik innoart', (error, stdout, stderr) => {
     }
     console.log(`stdout: ${stdout}`);
   });
-
+  
   console.log(123);
   exec('docker cp C:\\Users\\Innoart\\Documents\\username.csv flsrvr_cntnr:/home', (error, stdout, stderr) => {
     if (error) {
@@ -152,17 +152,17 @@ app.post('/shparam', function(req, res){
 app.post('/ubundufile', function(req, res){
   console.log('ubundu file start');
   //chmod +x /location/of/your/file/post.setup.sh
-  // exec('chmod +x home/innoart/script/robot.sh', (error, stdout, stderr) => {
-  //   if (error) {
-  //     console.log(`error: ${error.message}`);
-  //     return;
-  //   }
-  //   if (stderr) {
-  //     console.log(`stderr: ${stderr}`);
-  //     return;
-  //   }
-  //   console.log(`stdout: ${stdout}`);
-  // });
+  exec('chmod +x home/innoart/script/robot.sh', (error, stdout, stderr) => {
+    if (error) {
+      console.log(`error: ${error.message}`);
+      return;
+    }
+    if (stderr) {
+      console.log(`stderr: ${stderr}`);
+      return;
+    }
+    console.log(`stdout: ${stdout}`);
+  });
   exec('sh script/robot.sh karthik', (error, stdout, stderr) => {
     if (error) {
       console.log(`error: ${error.message}`);
@@ -174,6 +174,19 @@ app.post('/ubundufile', function(req, res){
     }
     console.log(`stdout: ${stdout}`);
   });
+  exec('sh home/innoart/script/robot.sh karthik', (error, stdout, stderr) => {
+    if (error) {
+      console.log(`error: ${error.message}`);
+      return;
+    }
+    if (stderr) {
+      console.log(`stderr: ${stderr}`);
+      return;
+    }
+    console.log(`stdout: ${stdout}`);
+  });
+
+
   console.log('ubundu file end');
   ///home/innoart/script/robot.sh
   
