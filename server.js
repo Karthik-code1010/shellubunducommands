@@ -137,6 +137,18 @@ app.post('/shparam', function(req, res){
 
 app.post('/ubundufile', function(req, res){
   console.log('ubundu file start');
+  //chmod +x /location/of/your/file/post.setup.sh
+  exec('chmod +x home/innoart/script/robot.sh', (error, stdout, stderr) => {
+    if (error) {
+      console.log(`error: ${error.message}`);
+      return;
+    }
+    if (stderr) {
+      console.log(`stderr: ${stderr}`);
+      return;
+    }
+    console.log(`stdout: ${stdout}`);
+  });
   exec('sh home/innoart/script/robot.sh karthik', (error, stdout, stderr) => {
     if (error) {
       console.log(`error: ${error.message}`);
