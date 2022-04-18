@@ -30,6 +30,7 @@ exec('sh somefile.sh karthik innoart', (error, stdout, stderr) => {
     }
     console.log(`stdout: ${stdout}`);
   });
+ 
   
 // var filesh = execFile('./somefile.sh', (error, stdout, stderr) => {
 
@@ -128,6 +129,27 @@ app.post('/shparam', function(req, res){
     }
     console.log(`stdout: ${stdout}`);
   });
+  
+  res.status(200).send('success')
+
+
+})
+
+app.post('/ubundufile', function(req, res){
+  console.log('ubundu file start');
+  exec('sh home/innoart/script/robot.sh karthik', (error, stdout, stderr) => {
+    if (error) {
+      console.log(`error: ${error.message}`);
+      return;
+    }
+    if (stderr) {
+      console.log(`stderr: ${stderr}`);
+      return;
+    }
+    console.log(`stdout: ${stdout}`);
+  });
+  console.log('ubundu file end');
+  ///home/innoart/script/robot.sh
   
   res.status(200).send('success')
 
