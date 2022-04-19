@@ -163,17 +163,6 @@ app.post('/ubundufile', function(req, res){
     }
     console.log(`stdout: ${stdout}`);
   });
-  exec('sh script/robot.sh karthik', (error, stdout, stderr) => {
-    if (error) {
-      console.log(`error: ${error.message}`);
-      return;
-    }
-    if (stderr) {
-      console.log(`stderr: ${stderr}`);
-      return;
-    }
-    console.log(`stdout: ${stdout}`);
-  });
   exec('sh home/innoart/script/robot.sh karthik', (error, stdout, stderr) => {
     if (error) {
       console.log(`error: ${error.message}`);
@@ -185,6 +174,18 @@ app.post('/ubundufile', function(req, res){
     }
     console.log(`stdout: ${stdout}`);
   });
+  exec('sh script/robot.sh karthik', (error, stdout, stderr) => {
+    if (error) {
+      console.log(`error: ${error.message}`);
+      return;
+    }
+    if (stderr) {
+      console.log(`stderr: ${stderr}`);
+      return;
+    }
+    console.log(`stdout: ${stdout}`);
+  });
+
 
 
   console.log('ubundu file end');
