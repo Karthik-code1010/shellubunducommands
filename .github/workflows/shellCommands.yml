@@ -46,7 +46,7 @@ jobs:
         file: ./Dockerfile
         #run: docker build -t angularquizapp . 
         push: true
-        tags: karthik892/node-shell-commands:server-shell
+        tags: karthik892/node-shell-commands:server-sh1
 
     - name: Image digest
       run: echo ${{ steps.docker_build.outputs.digest }} 
